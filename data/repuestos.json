@@ -1,0 +1,14 @@
+[
+{
+"ID": 1,
+"Repuesto": "Filtro de aceite",
+"Detalles": "Filtro de aceite para motor 1.8L",
+"Costo": 15.75
+},
+{
+"ID": 2,
+"Repuesto": "Bujías",
+"Detalles": "Juego de bujías para motor 2.0L",
+"Costo": 30.50
+}
+]

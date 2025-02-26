@@ -1,0 +1,16 @@
+[
+    {
+        "ID": 1,
+        "ID_Usuario": 1,
+        "Marca": "Toyota",
+        "Modelo": "Corolla",
+        "Placa": "ABC123"
+    },
+    {
+        "ID": 2,
+        "ID_Usuario": 2,
+        "Marca": "Ford",
+        "Modelo": "Focus",
+        "Placa": "XYZ456"
+    }
+]

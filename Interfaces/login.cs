@@ -5,10 +5,11 @@ class Login: Gtk.Window {
     private Entry userInput = new();
     private Entry passInput = new();
     private Button btnSubmit = new("Login");
+    private Contexto _contexto;
 
     [Obsolete]
-    public Login(): base("Login"){
-
+    public Login(Contexto contexto): base("Login"){
+        _contexto = contexto;
         // Medidas de la ventada
         SetDefaultSize(250,300);
         SetPosition(WindowPosition.Center);
@@ -35,7 +36,7 @@ class Login: Gtk.Window {
         string user = userInput.Text;
         string password = passInput.Text;
         Console.WriteLine($"Usuario: {user}, Password: {password}");
-        Menu menu = new();
+        Menu menu = new( _contexto);
         menu.ShowAll();
         Destroy();
 

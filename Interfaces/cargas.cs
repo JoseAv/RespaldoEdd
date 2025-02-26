@@ -1,14 +1,20 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Gtk;
-
+using UserListSimple;
 class Cargas: Gtk.Window {
 
     private Button cargaUser = new("Cargar Usuarios");
     private Button cargaCars = new("Cargar Vehiculos");
     private Button cargaRepuestos = new("Cargar Repuestos");
+    private Button Regresar = new("Regresar");
+     public Contexto contexto;
+     private UserListSimple<int>  ListaUsuarios;
 
     [Obsolete]
-    public Cargas(): base("Login"){
-
+    public unsafe Cargas(Contexto contexto): base("Cargas Masivas"){
+        this.contexto = contexto;
+        ListaUsuarios = this.contexto.ListaUsuarios;
         // Medidas de la ventada
         SetDefaultSize(250,300);
         SetPosition(WindowPosition.Center);
@@ -19,9 +25,11 @@ class Cargas: Gtk.Window {
         cargaUser.Clicked += LoadUser;
         cargaCars.Clicked += LoadCars;
         cargaRepuestos.Clicked += LoadRepuestos;
+        Regresar.Clicked += RegresarMenu;
         Container.PackStart(cargaUser,false,false,5);
         Container.PackStart(cargaCars,false,false,5);
         Container.PackStart(cargaRepuestos,false,false,5);
+          Container.PackStart(Regresar,false,false,5);
         Add(Container);
         ShowAll();
 
@@ -29,9 +37,15 @@ class Cargas: Gtk.Window {
 
     }
 
+    public void RegresarMenu(object sent,EventArgs e){
+        Menu menu = new(this.contexto);
+        menu.ShowAll();
+        Destroy();
+    }
+
 
     public void LoadUser(object sent,EventArgs e){
-        Console.Write("Pantalla Carga");
+        LoadJson("user");
 
     }
 
@@ -45,6 +59,50 @@ class Cargas: Gtk.Window {
 
     }
 
+
+    public  void LoadJson(string types){
+        FileChooserDialog fileJson = new(
+            "Selecciona un archivo Json",
+            this,
+            FileChooserAction.Open,
+            "cancelar",
+            ResponseType.Cancel,
+            "Abrir", ResponseType.Accept
+            );
+        // Filtro Archivos Json
+        FileFilter filter = new();
+        filter.AddPattern("*.json");
+        fileJson.Filter = filter;
+
+        if(fileJson.Run() == (int)ResponseType.Accept){
+            string filepath = fileJson.Filename;
+            fileJson.Destroy();
+        try{
+            string jsonContent = File.ReadAllText(filepath);
+          
+            if(types == "user"){
+                List<User> users = JsonSerializer.Deserialize<List<User>>(jsonContent);
+                foreach( var user in users){
+                ListaUsuarios.InsertNewUser(user.ID, user.Nombres,user.Apellidos,user.Correo,user.Contrasenia);
+                }
+                ListaUsuarios.ViewUsuarios();
+            }
+            if(types == "vehiculo"){
+                List<Vehiculos> vehiculos = JsonSerializer.Deserialize<List<Vehiculos>>(jsonContent);
+            }
+            if(types == "repuestos"){
+                List<Repuestos> repuestos = JsonSerializer.Deserialize<List<Repuestos>>(jsonContent);
+            }
+
+
+        }catch(Exception e){
+            Console.WriteLine("ERROR",e);
+        }
+
+        }else {
+            fileJson.Destroy();
+        }
+    }
         protected static void FinishPrograma(){
         Application.Quit();
 
@@ -52,4 +110,8 @@ class Cargas: Gtk.Window {
 
 
 
+}
+
+internal class ListaSimple<T>
+{
 }
