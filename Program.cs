@@ -4,7 +4,10 @@ class Programa {
 
 
      static void Main(String[] arg){
-        Console.WriteLine("Hola desde la Linea");
+        Application.Init();
+        Login login = new();
+        login.ShowAll();
+        Application.Run();
 
     }
 
