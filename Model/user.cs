@@ -86,7 +86,7 @@ namespace UserListSimple {
         }
 
 
-    public unsafe NodoUser<T>* SearchNodo(int ID){
+    public unsafe NodoUser<T>* SearchUser(int ID){
         if (header == null)
         {
         return null; 
