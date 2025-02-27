@@ -32,9 +32,8 @@ namespace UserListSimple {
 
 
         public bool DeleteUser(int ID){
-            if(header == null){
-                return true;
-            }
+            if(header == null){return true;}
+
             if(header->ID == ID){
                 header = header->sig;
                 return false;
@@ -92,33 +91,27 @@ namespace UserListSimple {
         return null; 
         }
             NodoUser<T>* current = header;
-            do
-            {
-                if (current->ID == ID)
-                {
-                    return current; 
+            while(current != null){
+                if(current->ID == ID){
+                    return current;
                 }
                 current = current->sig;
-            } while (current != header);
+            }
             return null;
         } 
 
-    public  void ViewUsuarios(){
+    public unsafe  void ViewUsuarios(){
     if (header == null)
         {
         return; 
         }
         NodoUser<T>* RunNodo = header;
-        do{
-            Console.WriteLine($"Nombres: {RunNodo->Nombres} Apellidos: {RunNodo->Apellidos}");
-            RunNodo= RunNodo->sig;
-
-        }while(RunNodo->sig != null);
-        Console.WriteLine($"Nombres: {RunNodo->Nombres} Apellidos: {RunNodo->Apellidos}");
-
-
+    while (RunNodo != null)
+    {
+        Console.WriteLine($"Nombres: {RunNodo->Nombres}, Apellidos: {RunNodo->Apellidos}");
+        RunNodo = RunNodo->sig;
     }
-
+    }
     }
 }
 namespace NodoUser {

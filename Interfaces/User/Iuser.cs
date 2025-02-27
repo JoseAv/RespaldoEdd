@@ -4,6 +4,7 @@ class IUser: Gtk.Window {
 
     private Button CreateSubmit = new("Crear un Usuario");
     private Button UpdateSubmit = new("Actualizar un  Usuario");
+    private Button DeleteSubmit = new("Eliminar un  Usuario");
     private Contexto contexto;
     private Label showUser = new();
 
@@ -19,8 +20,10 @@ class IUser: Gtk.Window {
         // Crear Boton y Agregar a ventana Inicial para que se muestre
         CreateSubmit.Clicked += CreateUSer;
         UpdateSubmit.Clicked += UpdateUser;
+        DeleteSubmit.Clicked += DeleteUser;
         Container.PackStart(CreateSubmit,false,false,5);
         Container.PackStart(UpdateSubmit,false,false,5);
+        Container.PackStart(DeleteSubmit,false,false,5);
         Add(Container);
         ShowAll();
 
@@ -37,6 +40,11 @@ class IUser: Gtk.Window {
     public void UpdateUser(object sent,EventArgs e){
         IUpdateUser updateUser = new(contexto);
         updateUser.ShowAll();
+    }
+
+        public void DeleteUser(object sent,EventArgs e){
+        IDeleteUser deleteUser = new(contexto);
+        deleteUser.ShowAll();
     }
 
         protected static void FinishPrograma(){

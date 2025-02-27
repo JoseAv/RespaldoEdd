@@ -86,6 +86,7 @@ class Cargas: Gtk.Window {
                 ListaUsuarios.InsertNewUser(user.ID, user.Nombres,user.Apellidos,user.Correo,user.Contrasenia);
                 }
                 ListaUsuarios.ViewUsuarios();
+                return;
             }
             if(types == "vehiculo"){
                 List<Vehiculos> vehiculos = JsonSerializer.Deserialize<List<Vehiculos>>(jsonContent);

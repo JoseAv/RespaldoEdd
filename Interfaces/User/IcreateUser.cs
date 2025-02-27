@@ -51,7 +51,7 @@ class ICreateUser: Gtk.Window {
 
         if(int.TryParse(ID, out int intID)){
             this.contexto.ListaUsuarios.InsertNewUser(intID,Nombres,Apellido,Correo,Contrasenia);
-            this.contexto.ListaUsuarios.ViewUsuarios();
+            ListaUsuarios.ViewUsuarios();
         }
 
 
