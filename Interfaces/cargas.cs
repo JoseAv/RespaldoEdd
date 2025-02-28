@@ -2,6 +2,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Gtk;
 using UserListSimple;
+using VehiculosListaDoble;
 class Cargas: Gtk.Window {
 
     private Button cargaUser = new("Cargar Usuarios");
@@ -10,11 +11,14 @@ class Cargas: Gtk.Window {
     private Button Regresar = new("Regresar");
      public Contexto contexto;
      private UserListSimple<int>  ListaUsuarios;
+     public VehiculosListaDoble<int> ListaRepuestos;
 
     [Obsolete]
     public unsafe Cargas(Contexto contexto): base("Cargas Masivas"){
         this.contexto = contexto;
         ListaUsuarios = this.contexto.ListaUsuarios;
+        ListaRepuestos = this.contexto.ListaRepuestos;
+        
         // Medidas de la ventada
         SetDefaultSize(250,300);
         SetPosition(WindowPosition.Center);
@@ -32,9 +36,6 @@ class Cargas: Gtk.Window {
           Container.PackStart(Regresar,false,false,5);
         Add(Container);
         ShowAll();
-
-
-
     }
 
     public void RegresarMenu(object sent,EventArgs e){
@@ -46,11 +47,10 @@ class Cargas: Gtk.Window {
 
     public void LoadUser(object sent,EventArgs e){
         LoadJson("user");
-
     }
 
     public void LoadCars(object sent,EventArgs e){
-        Console.Write("Pantalla Carga");
+        LoadJson("vehiculo");
 
     }
 
@@ -90,6 +90,9 @@ class Cargas: Gtk.Window {
             }
             if(types == "vehiculo"){
                 List<Vehiculos> vehiculos = JsonSerializer.Deserialize<List<Vehiculos>>(jsonContent);
+                foreach(var vehi in vehiculos){
+                    ListaRepuestos.InsertNewVehiculo(vehi.ID,vehi.ID_Usuario,vehi.Marca,vehi.Modelo, vehi.Placa);
+                }
             }
             if(types == "repuestos"){
                 List<Repuestos> repuestos = JsonSerializer.Deserialize<List<Repuestos>>(jsonContent);

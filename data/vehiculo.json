@@ -3,14 +3,14 @@
         "ID": 1,
         "ID_Usuario": 1,
         "Marca": "Toyota",
-        "Modelo": "Corolla",
+        "Modelo": 2016,
         "Placa": "ABC123"
     },
     {
         "ID": 2,
         "ID_Usuario": 2,
         "Marca": "Ford",
-        "Modelo": "Focus",
+        "Modelo": 2015,
         "Placa": "XYZ456"
     }
 ]

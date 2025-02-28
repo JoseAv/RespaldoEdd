@@ -4,6 +4,7 @@ class Menu: Gtk.Window {
 
     private Button cargaSubmit = new("Carga Masiva");
     private Button sendUSer = new("Usuarios");
+    private Button SendVehiculos = new("Crear Vehiculos");
     private Contexto contexto;
 
     [Obsolete]
@@ -18,8 +19,10 @@ class Menu: Gtk.Window {
         // Crear Boton y Agregar a ventana Inicial para que se muestre
         cargaSubmit.Clicked += SendCarga;
         sendUSer.Clicked += SendUSer;
+        SendVehiculos.Clicked += CrearVehiculos;
         Container.PackStart(cargaSubmit,false,false,5);
         Container.PackStart(sendUSer,false,false,5);
+        Container.PackStart(SendVehiculos,false,false,5);
         Add(Container);
         ShowAll();
 
@@ -27,15 +30,24 @@ class Menu: Gtk.Window {
 
     }
 
-
+    [Obsolete]
     public void SendCarga(object sent,EventArgs e){
         Cargas cargas = new(contexto);
         cargas.ShowAll();
         Destroy();
     }
 
+    [Obsolete]
     public void SendUSer(object sent,EventArgs e){
         IUser user = new(contexto);
+        user.ShowAll();
+        Destroy();
+    }
+
+    [Obsolete]
+    public void CrearVehiculos(object sent,EventArgs e){
+        ICreateVehiculo createVehiculo = new(contexto);
+        createVehiculo.ShowAll();
         Destroy();
     }
 
