@@ -1,11 +1,16 @@
 using System.Runtime.InteropServices;
+using FacturaPila;
 using NodoRepuestos;
 using NodoServicios;
 
-namespace ServiciosPila {
+namespace ServiciosCola {
 
-    public unsafe class  ServiciosPila<T> where T: unmanaged{
+    public unsafe class  ServiciosCola<T> where T: unmanaged{
         public NodoServicios<T>* header = null;  
+        public FacturaPila<int> facturaPila;
+        public  ServiciosCola(FacturaPila<int> facturaPila){
+            this.facturaPila = facturaPila;
+        }
         public bool InsertNewServicio(int ID,int ID_Repuesto,int ID_vehiculos,float Costo){
                 // if(ComprobateIdUser(ID)){ return true;}
 
@@ -26,6 +31,8 @@ namespace ServiciosPila {
                 NodoRun= NodoRun->sig;
             }
             NodoRun->sig = newNodo;
+            
+
             return false;
         }
 

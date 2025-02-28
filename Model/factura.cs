@@ -1,12 +1,12 @@
 using System.Runtime.InteropServices;
 using NodoFactura;
 
-namespace FacturaCola {
+namespace FacturaPila {
 
-    public unsafe class  FacturaCola<T> where T: unmanaged{
+    public unsafe class  FacturaPila<T> where T: unmanaged{
         public NodoFactura<T>* header = null;  
         public int ID=1;
-        public bool InsertNewServicio(int ID_Orden,float Total){
+        public bool InsertNewFactura(int ID_Orden,float Total){
                 // if(ComprobateIdUser(ID)){ return true;}
 
             NodoFactura<T>* newNodo = (NodoFactura<T>*)Marshal.AllocHGlobal(sizeof(NodoFactura<T>));

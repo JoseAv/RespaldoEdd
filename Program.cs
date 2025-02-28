@@ -1,5 +1,7 @@
-﻿using Gtk;
+﻿using FacturaPila;
+using Gtk;
 using RepuestosListaCircular;
+using ServiciosCola;
 using UserListSimple;
 using VehiculosListaDoble;
 
@@ -10,7 +12,9 @@ class Programa {
         UserListSimple<int> userListSimple = new();
         VehiculosListaDoble<int> ListaVehiculos = new();
         RepuestosListaCircular<int> ListaRepuestos = new();
-        Contexto contexto = new(userListSimple,ListaVehiculos,ListaRepuestos);
+        FacturaPila<int> facturaPila = new();
+        ServiciosCola<int> servicioscola = new(facturaPila);
+        Contexto contexto = new(userListSimple,ListaVehiculos,ListaRepuestos,servicioscola,facturaPila);
         Login login = new(contexto);
         login.ShowAll();
         Application.Run();
