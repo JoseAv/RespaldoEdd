@@ -3,18 +3,18 @@ using UserListSimple;
 using VehiculosListaDoble;
 class ICreateVehiculo: Gtk.Window {
 
-    private Button CreateSubmit = new("Crear Usuario");
+    private Button CreateSubmit = new("Crear Vehiculo");
     private Entry inputID = new();
     private Entry inputID_Usuario= new();
     private Entry inputMarca = new();
     private Entry inputModelo = new();
     private Entry inputPlaca = new();
     private Contexto contexto;
-    public VehiculosListaDoble<int> ListaRepuestos;
+    public VehiculosListaDoble<int> ListaVehiculos;
     [Obsolete]
     public ICreateVehiculo(Contexto contexto): base("Crear Vehiculos"){
         this.contexto = contexto;
-        ListaRepuestos = contexto.ListaRepuestos;
+        ListaVehiculos = contexto.ListaVehiculos;
         // Medidas de la ventada
         SetDefaultSize(250,300);
         SetPosition(WindowPosition.Center);
@@ -47,8 +47,8 @@ class ICreateVehiculo: Gtk.Window {
         string Modelo= inputModelo.Text;
         string Placa= inputPlaca.Text;
         if(int.TryParse(ID, out int intID) && int.TryParse(ID_Usuario, out int intID_Usuario) && int.TryParse(Modelo, out int intModelo)){
-            ListaRepuestos.InsertNewVehiculo(intID,intID_Usuario,Marca,intModelo,Placa);
-            ListaRepuestos.ViewVehiculos();
+            ListaVehiculos.InsertNewVehiculo(intID,intID_Usuario,Marca,intModelo,Placa);
+            ListaVehiculos.ViewVehiculos();
           
         }
         //  Destroy();

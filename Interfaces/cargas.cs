@@ -1,6 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Gtk;
+using RepuestosListaCircular;
 using UserListSimple;
 using VehiculosListaDoble;
 class Cargas: Gtk.Window {
@@ -11,14 +12,15 @@ class Cargas: Gtk.Window {
     private Button Regresar = new("Regresar");
      public Contexto contexto;
      private UserListSimple<int>  ListaUsuarios;
-     public VehiculosListaDoble<int> ListaRepuestos;
+     public VehiculosListaDoble<int> ListaVehiculos;
+     public RepuestosListaCircular<int> ListaRepuestos;
 
     [Obsolete]
     public unsafe Cargas(Contexto contexto): base("Cargas Masivas"){
         this.contexto = contexto;
         ListaUsuarios = this.contexto.ListaUsuarios;
+        ListaVehiculos = this.contexto.ListaVehiculos;
         ListaRepuestos = this.contexto.ListaRepuestos;
-        
         // Medidas de la ventada
         SetDefaultSize(250,300);
         SetPosition(WindowPosition.Center);
@@ -55,7 +57,7 @@ class Cargas: Gtk.Window {
     }
 
     public void LoadRepuestos(object sent,EventArgs e){
-        Console.Write("Pantalla Carga");
+        LoadJson("repuestos");
 
     }
 
@@ -91,11 +93,18 @@ class Cargas: Gtk.Window {
             if(types == "vehiculo"){
                 List<Vehiculos> vehiculos = JsonSerializer.Deserialize<List<Vehiculos>>(jsonContent);
                 foreach(var vehi in vehiculos){
-                    ListaRepuestos.InsertNewVehiculo(vehi.ID,vehi.ID_Usuario,vehi.Marca,vehi.Modelo, vehi.Placa);
+                    ListaVehiculos.InsertNewVehiculo(vehi.ID,vehi.ID_Usuario,vehi.Marca,vehi.Modelo, vehi.Placa);
                 }
+                return;
             }
             if(types == "repuestos"){
                 List<Repuestos> repuestos = JsonSerializer.Deserialize<List<Repuestos>>(jsonContent);
+                foreach(var repuesto in repuestos){
+                     ListaRepuestos.InsertNewRepuesto(repuesto.ID,repuesto.Repuesto,repuesto.Detalles, repuesto.Costo);
+                    Console.WriteLine("Repuestos" + repuesto.Repuesto);
+                }
+                    ListaRepuestos.viewRepuestos();
+                    return;
             }
 
 
