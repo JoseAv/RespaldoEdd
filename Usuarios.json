@@ -1,0 +1,72 @@
+[
+  {
+    "ID": 1,
+    "Nombres": "Carlos Alberto",
+    "Apellidos": "Gomez Martinez",
+    "Correo": "carlos.alberto@usac.com",
+    "Contrasenia": "CarlosMartinez"
+  },
+  {
+    "ID": 2,
+    "Nombres": "Ana Lucia",
+    "Apellidos": "Martinez Lopez",
+    "Correo": "ana.lucia@usac.com",
+    "Contrasenia": "AnaLopez"
+  },
+  {
+    "ID": 3,
+    "Nombres": "Luis Enrique",
+    "Apellidos": "Perez Ramirez",
+    "Correo": "luis.enrique@usac.com",
+    "Contrasenia": "LuisRamirez"
+  },
+  {
+    "ID": 4,
+    "Nombres": "Marta Isabel",
+    "Apellidos": "Lopez Perez",
+    "Correo": "marta.isabel@usac.com",
+    "Contrasenia": "MartaPerez"
+  },
+  {
+    "ID": 5,
+    "Nombres": "Juan Carlos",
+    "Apellidos": "Hernandez Lopez",
+    "Correo": "juan.carlos@usac.com",
+    "Contrasenia": "JuanLopez"
+  },
+  {
+    "ID": 6,
+    "Nombres": "Maria Fernanda",
+    "Apellidos": "Garcia Lopez",
+    "Correo": "maria.fernanda@usac.com",
+    "Contrasenia": "MariaLopez"
+  },
+  {
+    "ID": 7,
+    "Nombres": "Pedro Pablo",
+    "Apellidos": "Rodriguez Torres",
+    "Correo": "pedro.pablo@usac.com",
+    "Contrasenia": "PedroTorres"
+  },
+  {
+    "ID": 8,
+    "Nombres": "Laura Isabel",
+    "Apellidos": "Sanchez Morales",
+    "Correo": "laura.isabel@usac.com",
+    "Contrasenia": "LauraMorales"
+  },
+  {
+    "ID": 9,
+    "Nombres": "Rafael Alejandro",
+    "Apellidos": "Ramirez Diaz",
+    "Correo": "rafael.alejandro@usac.com",
+    "Contrasenia": "RafaelDiaz"
+  },
+  {
+    "ID": 10,
+    "Nombres": "Isabel Cristina",
+    "Apellidos": "Diaz Lopez",
+    "Correo": "isabel.cristina@usac.com",
+    "Contrasenia": "IsabelLopez"
+  }
+]

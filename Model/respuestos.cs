@@ -47,6 +47,19 @@ namespace RepuestosListaCircular {
         return;
     }
 
+    public unsafe NodoRepuestos<T>* ComprobateIdRpuestos(int IDrepuestos){
+        if(header == null){
+            return null;
+        }
+        NodoRepuestos<T>* temp = header;
+    do{
+        if(temp->ID == IDrepuestos){return temp;}
+        temp= temp->sig;
+    }while(temp->sig != header);
+
+        return null;
+    }
+
     }
 }
 

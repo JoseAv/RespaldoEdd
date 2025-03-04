@@ -13,7 +13,7 @@ class Programa {
         VehiculosListaDoble<int> ListaVehiculos = new();
         RepuestosListaCircular<int> ListaRepuestos = new();
         FacturaPila<int> facturaPila = new();
-        ServiciosCola<int> servicioscola = new(facturaPila);
+        ServiciosCola<int> servicioscola = new(facturaPila,ListaRepuestos,ListaVehiculos );
         Contexto contexto = new(userListSimple,ListaVehiculos,ListaRepuestos,servicioscola,facturaPila);
         Login login = new(contexto);
         login.ShowAll();

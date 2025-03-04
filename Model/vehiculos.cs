@@ -40,10 +40,20 @@ namespace VehiculosListaDoble {
             Console.WriteLine("Vehiculos" + vehiculos->Marca);
             vehiculos= vehiculos->sig;
         }
-
-
     }
 
+    public unsafe NodoVehiculos<T>* ComprobateIDVehiculos(int IDVehiculos){
+        if(header == null) return null;
+
+        NodoVehiculos<T>* temp = header;
+        while(temp != null){
+            if(temp->ID == IDVehiculos){
+                return temp;
+            }
+            temp = temp->sig;
+        }
+        return null;
+    }
 
     }
 }

@@ -1,0 +1,93 @@
+[
+    {
+      "ID": 1,
+      "Repuesto": "Filtro de aceite",
+      "Detalles": "Filtra impurezas del aceite del motor.",
+      "Costo": 25.50
+    },
+    {
+      "ID": 2,
+      "Repuesto": "Bujías",
+      "Detalles": "Componente esencial para encender la mezcla de aire y combustible.",
+      "Costo": 15.75
+    },
+    {
+      "ID": 3,
+      "Repuesto": "Frenos delanteros",
+      "Detalles": "Piezas para frenar el vehículo en la parte delantera.",
+      "Costo": 60.00
+    },
+    {
+      "ID": 4,
+      "Repuesto": "Pastillas de freno traseras",
+      "Detalles": "Piezas para frenar el vehículo en la parte trasera.",
+      "Costo": 45.30
+    },
+    {
+      "ID": 5,
+      "Repuesto": "Amortiguadores",
+      "Detalles": "Componente de suspensión para absorber impactos.",
+      "Costo": 95.20
+    },
+    {
+      "ID": 6,
+      "Repuesto": "Aceite de motor",
+      "Detalles": "Lubricante para el motor del vehículo.",
+      "Costo": 18.60
+    },
+    {
+      "ID": 7,
+      "Repuesto": "Filtro de aire",
+      "Detalles": "Filtra el aire que entra al motor para mejorar la combustión.",
+      "Costo": 22.10
+    },
+    {
+      "ID": 8,
+      "Repuesto": "Correa de distribución",
+      "Detalles": "Componente que sincroniza el motor.",
+      "Costo": 80.00
+    },
+    {
+      "ID": 9,
+      "Repuesto": "Radiador",
+      "Detalles": "Sistema para mantener el motor a temperatura adecuada.",
+      "Costo": 150.00
+    },
+    {
+      "ID": 10,
+      "Repuesto": "Batería",
+      "Detalles": "Fuente de energía para el vehículo.",
+      "Costo": 100.50
+    },
+    {
+      "ID": 11,
+      "Repuesto": "Cables de encendido",
+      "Detalles": "Conducen energía desde la batería a las bujías.",
+      "Costo": 30.40
+    },
+    {
+      "ID": 12,
+      "Repuesto": "Espejos laterales",
+      "Detalles": "Espejos para una mejor visibilidad en el vehículo.",
+      "Costo": 50.00
+    },
+    {
+      "ID": 13,
+      "Repuesto": "Manguera de radiador",
+      "Detalles": "Transporta el líquido refrigerante en el sistema de enfriamiento.",
+      "Costo": 20.80
+    },
+    {
+      "ID": 14,
+      "Repuesto": "Suspensión trasera",
+      "Detalles": "Sistema que absorbe impactos en la parte trasera del vehículo.",
+      "Costo": 120.00
+    },
+    {
+      "ID": 15,
+      "Repuesto": "Bombas de freno",
+      "Detalles": "Componente que genera presión para accionar los frenos.",
+      "Costo": 75.00
+    }
+  ]
+  

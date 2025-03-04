@@ -7,8 +7,6 @@ namespace FacturaPila {
         public NodoFactura<T>* header = null;  
         public int ID=1;
         public bool InsertNewFactura(int ID_Orden,float Total){
-                // if(ComprobateIdUser(ID)){ return true;}
-
             NodoFactura<T>* newNodo = (NodoFactura<T>*)Marshal.AllocHGlobal(sizeof(NodoFactura<T>));
             newNodo->ID= ID++;
             newNodo->ID_Orden = ID_Orden;
@@ -28,13 +26,12 @@ namespace FacturaPila {
             return false;
         }
 
-        public void ListaCola(){
-            if(header == null){return;}
+        public NodoFactura<T>* ListaCola(){
+            if(header == null){return null;}
             if(header->sig == null){
             NodoFactura<T>* temp = header;
             header = null;
-           Marshal.FreeHGlobal((IntPtr)temp);
-           return;
+           return temp;
             }
             NodoFactura<T>* NodoRun = header;
             while(NodoRun->sig->sig != null){
@@ -42,8 +39,7 @@ namespace FacturaPila {
             }
             NodoFactura<T>* lastNode = NodoRun->sig;
             NodoRun->sig = null;
-            Marshal.FreeHGlobal((IntPtr)lastNode);
-            return;
+            return lastNode;
         }
 
 

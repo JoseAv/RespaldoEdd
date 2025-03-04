@@ -6,6 +6,8 @@ class Menu: Gtk.Window {
     private Button sendUSer = new("Usuarios");
     private Button SendVehiculos = new("Crear Vehiculos");
     private Button SendRepuestos = new("Crear Repuestos");
+    private Button SendServicios = new("Crear Servicios");
+    private Button sendFactura = new("Crear Factura");
     private Contexto contexto;
 
     [Obsolete]
@@ -22,10 +24,14 @@ class Menu: Gtk.Window {
         sendUSer.Clicked += SendUSer;
         SendVehiculos.Clicked += CrearVehiculos;
         SendRepuestos.Clicked += CrearRepuestos;
+        SendServicios.Clicked += CrearServicios;
+        sendFactura.Clicked += CancelFacture;
         Container.PackStart(cargaSubmit,false,false,5);
         Container.PackStart(sendUSer,false,false,5);
         Container.PackStart(SendVehiculos,false,false,5);
         Container.PackStart(SendRepuestos,false,false,5);
+        Container.PackStart(SendServicios, false,false,5);
+         Container.PackStart(sendFactura, false,false,5);
         Add(Container);
         ShowAll();
 
@@ -58,6 +64,20 @@ class Menu: Gtk.Window {
     public void CrearRepuestos(object sent,EventArgs e){
         ICreateRepuestos createRepuestos = new(contexto);
         createRepuestos.ShowAll();
+      
+    }
+
+    [Obsolete]
+    public void CrearServicios(object sent,EventArgs e){
+        ICreateServicios createServicios = new(contexto);
+        createServicios.ShowAll();
+      
+    }
+
+    [Obsolete]
+    public void CancelFacture(object sent,EventArgs e){
+        IShowFacture showFacture= new(contexto);
+        showFacture.ShowAll();
       
     }
 
