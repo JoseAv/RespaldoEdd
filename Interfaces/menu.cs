@@ -14,7 +14,7 @@ class Menu: Gtk.Window {
     public Menu(Contexto contexto): base("Menu"){
         this.contexto = contexto;
         // Medidas de la ventada
-        SetDefaultSize(250,300);
+        SetDefaultSize(300,350);
         SetPosition(WindowPosition.Center);
 
         // Crear Contenedor y agregar texto
@@ -78,6 +78,7 @@ class Menu: Gtk.Window {
     public void CancelFacture(object sent,EventArgs e){
         IShowFacture showFacture= new(contexto);
         showFacture.ShowAll();
+        this.contexto.facturaPila.ReporFactura();
       
     }
 

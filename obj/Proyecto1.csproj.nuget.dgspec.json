@@ -43,6 +43,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "GraphViz4Net": {
+              "target": "Package",
+              "version": "[3.0.2, )"
+            },
             "GtkSharp": {
               "target": "Package",
               "version": "[3.24.24.95, )"

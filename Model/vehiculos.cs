@@ -55,6 +55,39 @@ namespace VehiculosListaDoble {
         return null;
     }
 
+    public unsafe void ReporVehiculos(){
+        if(header == null){return;}
+        var dotBuilder = new System.Text.StringBuilder();
+         dotBuilder.AppendLine("digraph G {  rankdir=LR");
+
+        // Primera iteración: Agregar los nodos
+        NodoVehiculos<T>* temp = header;
+        while (temp != null)
+        {
+            dotBuilder.AppendLine($"    \"{temp->ID}\" [label=\"ID: {temp->ID}\\nMarca: {temp->Marca}\"];");
+            temp = temp->sig;
+        }
+
+        temp = header; 
+        while (temp != null && temp->sig != null)
+        {
+            dotBuilder.AppendLine($"\"{temp->ID}\" -> \"{temp->sig->ID}\";");
+            dotBuilder.AppendLine($" \"{temp->sig->ID}\" ->  \"{temp->ID}\" ;");
+            temp = temp->sig;
+        }
+
+        dotBuilder.AppendLine("}");
+
+        string dotFilePath = "Vehiculos.dot";
+        System.IO.File.WriteAllText(dotFilePath, dotBuilder.ToString());
+        Console.WriteLine($"Archivo DOT generado: {dotFilePath}");
+        Grafico.GenerarImagen(dotFilePath, "Vehiculos.png");
+        return;
+    }
+
+
+
+
     }
 }
 

@@ -1,0 +1,32 @@
+digraph G {  rankdir=LR
+    "1" [label="ID: 1\nDetalles: Filtra impurezas del aceite del motor."];
+    "2" [label="ID: 2\nDetalles: Componente esencial para encender la mezcla de aire y combustible."];
+    "3" [label="ID: 3\nDetalles: Piezas para frenar el vehículo en la parte delantera."];
+    "4" [label="ID: 4\nDetalles: Piezas para frenar el vehículo en la parte trasera."];
+    "5" [label="ID: 5\nDetalles: Componente de suspensión para absorber impactos."];
+    "6" [label="ID: 6\nDetalles: Lubricante para el motor del vehículo."];
+    "7" [label="ID: 7\nDetalles: Filtra el aire que entra al motor para mejorar la combustión."];
+    "8" [label="ID: 8\nDetalles: Componente que sincroniza el motor."];
+    "9" [label="ID: 9\nDetalles: Sistema para mantener el motor a temperatura adecuada."];
+    "10" [label="ID: 10\nDetalles: Fuente de energía para el vehículo."];
+    "11" [label="ID: 11\nDetalles: Conducen energía desde la batería a las bujías."];
+    "12" [label="ID: 12\nDetalles: Espejos para una mejor visibilidad en el vehículo."];
+    "13" [label="ID: 13\nDetalles: Transporta el líquido refrigerante en el sistema de enfriamiento."];
+    "14" [label="ID: 14\nDetalles: Sistema que absorbe impactos en la parte trasera del vehículo."];
+    "15" [label="ID: 15\nDetalles: Componente que genera presión para accionar los frenos."];
+"1" -> "2";
+"2" -> "3";
+"3" -> "4";
+"4" -> "5";
+"5" -> "6";
+"6" -> "7";
+"7" -> "8";
+"8" -> "9";
+"9" -> "10";
+"10" -> "11";
+"11" -> "12";
+"12" -> "13";
+"13" -> "14";
+"14" -> "15";
+"15" -> "1";
+}

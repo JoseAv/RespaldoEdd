@@ -9,11 +9,13 @@ class IShowFacture: Gtk.Window {
     private Entry inputTotal = new();
     private Contexto contexto;
     [Obsolete]
-    public unsafe IShowFacture(Contexto contexto): base("Crear Vehiculos"){
+    public unsafe IShowFacture(Contexto contexto): base("Cancelar Factura"){
         this.contexto = contexto;
-        NodoFactura<T>* factura = (NodoFactura<T>*)this.contexto.facturaPila.ListaCola();
+        NodoFactura<T>* factura = (NodoFactura<T>*)this.contexto.facturaPila.ListaPila();
         if(factura == null){
             Console.WriteLine("No hay factura");
+            IError error = new();
+            error.ShowAll();
             Destroy();
             return;
             }

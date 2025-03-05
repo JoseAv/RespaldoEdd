@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GraphViz4Net" Version="3.0.2" />
     <PackageReference Include="GtkSharp" Version="3.24.24.95" />
   </ItemGroup>
 

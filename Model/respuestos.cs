@@ -60,6 +60,34 @@ namespace RepuestosListaCircular {
         return null;
     }
 
+    public unsafe void ReporRepuestos(){
+        if(header == null){return;}
+        var dotBuilder = new System.Text.StringBuilder();
+         dotBuilder.AppendLine("digraph G {  rankdir=LR");
+
+        // Primera iteración: Agregar los nodos
+        NodoRepuestos<T>* temp = header;
+        do {
+            dotBuilder.AppendLine($"    \"{temp->ID}\" [label=\"ID: {temp->ID}\\nDetalles: {temp->Detalles}\"];");
+            temp = temp->sig;
+        }while(temp != header);
+        temp = header; 
+
+        do{
+            dotBuilder.AppendLine($"\"{temp->ID}\" -> \"{temp->sig->ID}\";");
+            temp = temp->sig;
+        }while(temp != header);
+
+        dotBuilder.AppendLine("}");
+
+        string dotFilePath = "Repuestos.dot";
+        System.IO.File.WriteAllText(dotFilePath, dotBuilder.ToString());
+        Console.WriteLine($"Archivo DOT generado: {dotFilePath}");
+        Grafico.GenerarImagen(dotFilePath, "Repuestos.png");
+        return;
+    }
+
+
     }
 }
 

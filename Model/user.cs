@@ -112,6 +112,36 @@ namespace UserListSimple {
         RunNodo = RunNodo->sig;
     }
     }
+
+    public unsafe void ReporUser(){
+        if(header == null){return;}
+        var dotBuilder = new System.Text.StringBuilder();
+         dotBuilder.AppendLine("digraph G {  rankdir=LR");
+
+        // Primera iteración: Agregar los nodos
+        NodoUser<T>* temp = header;
+        while (temp != null)
+        {
+            dotBuilder.AppendLine($"    \"{temp->ID}\" [label=\"ID: {temp->ID}\\nNombre: {temp->Nombres}\"];");
+            temp = temp->sig;
+        }
+
+        temp = header; 
+        while (temp != null && temp->sig != null)
+        {
+            dotBuilder.AppendLine($"    \"{temp->ID}\" -> \"{temp->sig->ID}\";");
+            temp = temp->sig;
+        }
+
+        dotBuilder.AppendLine("}");
+
+        string dotFilePath = "Usuarios.dot";
+        System.IO.File.WriteAllText(dotFilePath, dotBuilder.ToString());
+        Console.WriteLine($"Archivo DOT generado: {dotFilePath}");
+        Grafico.GenerarImagen(dotFilePath, "Usuarios.png");
+        return;
+    }
+
     }
 }
 namespace NodoUser {

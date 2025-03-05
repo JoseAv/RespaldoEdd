@@ -18,12 +18,15 @@ namespace ServiciosCola {
             this.ListaRepuestos = ListaRepuestos;
             this.ListaVehiculos = ListaVehiculos;
         }
+
+        [Obsolete]
         public bool InsertNewServicio(int ID,int ID_Repuesto,int ID_vehiculos,string Detalles,float Costo){
             NodoRepuestos<T>* Repuestos = (NodoRepuestos<T>*)this.ListaRepuestos.ComprobateIdRpuestos(ID_Repuesto);
             NodoVehiculos<T>* Vehiculos = (NodoVehiculos<T>*)this.ListaVehiculos.ComprobateIDVehiculos(ID_vehiculos);
 
             if(Repuestos == null || Vehiculos == null){
-                Console.WriteLine("Datos no aceptados");
+                IError error = new();
+                error.ShowAll();
                 return true;
             }
 
@@ -75,6 +78,34 @@ namespace ServiciosCola {
                 temp = temp->sig;
             }
         }
+
+
+        public unsafe void ReporServicios(){
+        if(header == null){return;}
+        var dotBuilder = new System.Text.StringBuilder();
+         dotBuilder.AppendLine("digraph G {  rankdir=LR");
+
+        // Primera iteración: Agregar los nodos
+        NodoServicios<T>* temp = header;
+        while(temp != null) {
+            dotBuilder.AppendLine($" \"{temp->ID}\" [label=\"ID: {temp->ID}\\nTotalFactura: {temp->Detalles}\"];");
+            temp = temp->sig;
+        }
+        temp = header; 
+
+        while(temp->sig != null){
+            dotBuilder.AppendLine($"\"{temp->ID}\" -> \"{temp->sig->ID}\" ;");
+            temp = temp->sig;
+        }
+
+        dotBuilder.AppendLine("}");
+
+        string dotFilePath = "Factura.dot";
+        System.IO.File.WriteAllText(dotFilePath, dotBuilder.ToString());
+        Console.WriteLine($"Archivo DOT generado: {dotFilePath}");
+        Grafico.GenerarImagen(dotFilePath, "Factura.png");
+        return;
+    }
 
 
 

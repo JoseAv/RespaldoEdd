@@ -88,6 +88,8 @@ class Cargas: Gtk.Window {
                 ListaUsuarios.InsertNewUser(user.ID, user.Nombres,user.Apellidos,user.Correo,user.Contrasenia);
                 }
                 ListaUsuarios.ViewUsuarios();
+               
+                ListaUsuarios.ReporUser();
                 return;
             }
             if(types == "vehiculo"){
@@ -95,6 +97,7 @@ class Cargas: Gtk.Window {
                 foreach(var vehi in vehiculos){
                     ListaVehiculos.InsertNewVehiculo(vehi.ID,vehi.ID_Usuario,vehi.Marca,vehi.Modelo, vehi.Placa);
                 }
+                ListaVehiculos.ReporVehiculos();
                 return;
             }
             if(types == "repuestos"){
@@ -104,6 +107,7 @@ class Cargas: Gtk.Window {
                     Console.WriteLine("Repuestos" + repuesto.Repuesto);
                 }
                     ListaRepuestos.viewRepuestos();
+                    ListaRepuestos.ReporRepuestos();
                     return;
             }
 
