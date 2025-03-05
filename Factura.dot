@@ -1,7 +1,3 @@
-digraph G {  rankdir=BT
- "1" [label="ID: 1\nTotalFactura: 37.5"];
- "2" [label="ID: 2\nTotalFactura: 37.5"];
- "3" [label="ID: 3\nTotalFactura: 37.5"];
-"1" -> "2" [dir=back];
-"2" -> "3" [dir=back];
+digraph G {  rankdir=LR
+ "1" [label="ID: 1\nTotalFactura: sada"];
 }

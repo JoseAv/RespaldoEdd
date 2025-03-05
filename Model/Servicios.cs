@@ -88,7 +88,7 @@ namespace ServiciosCola {
         // Primera iteración: Agregar los nodos
         NodoServicios<T>* temp = header;
         while(temp != null) {
-            dotBuilder.AppendLine($" \"{temp->ID}\" [label=\"ID: {temp->ID}\\nTotalFactura: {temp->Detalles}\"];");
+            dotBuilder.AppendLine($" \"{temp->ID}\" [label=\"ID: {temp->ID}\\nDetalles: {temp->Detalles}\"];");
             temp = temp->sig;
         }
         temp = header; 
@@ -100,10 +100,10 @@ namespace ServiciosCola {
 
         dotBuilder.AppendLine("}");
 
-        string dotFilePath = "Factura.dot";
+        string dotFilePath = "Servicios.dot";
         System.IO.File.WriteAllText(dotFilePath, dotBuilder.ToString());
         Console.WriteLine($"Archivo DOT generado: {dotFilePath}");
-        Grafico.GenerarImagen(dotFilePath, "Factura.png");
+        Grafico.GenerarImagen(dotFilePath, "Servicios.png");
         return;
     }
 

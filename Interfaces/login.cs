@@ -36,9 +36,14 @@ class Login: Gtk.Window {
         string user = userInput.Text;
         string password = passInput.Text;
         Console.WriteLine($"Usuario: {user}, Password: {password}");
+        if(user == "root@gmail.com" && password== "root123"){
         Menu menu = new( _contexto);
         menu.ShowAll();
         Destroy();
+        }else{
+            IError error = new();
+            error.ShowAll();
+        }
 
 
     }

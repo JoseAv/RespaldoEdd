@@ -45,12 +45,15 @@ class ICreateServicios: Gtk.Window {
         string ID_vehiculos= inputID_vehiculos.Text;
         string Detalles= inputDetalles.Text;
         string Costo= inputCosto.Text;
-        if(int.TryParse(ID, out int intID) && float.TryParse(Costo, out float floatModelo) 
+        if(
+            int.TryParse(ID, out int intID) 
+        && float.TryParse(Costo, out float floatCosto) 
         && int.TryParse(ID_Repuesto, out int intID_Repuesto) 
-        && int.TryParse(ID_vehiculos, out int intID_vehiculos)){
-            servicioscola.InsertNewServicio(intID,intID_Repuesto,intID_vehiculos,Detalles,floatModelo);
+        && int.TryParse(ID_vehiculos, out int intID_vehiculos)
+        ){
+            servicioscola.InsertNewServicio(intID,intID_Repuesto,intID_vehiculos,Detalles,floatCosto);
             servicioscola.ViewSercios();
-    
+            servicioscola.ReporServicios();
         }
          Destroy();
 
