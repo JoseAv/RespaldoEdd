@@ -49,7 +49,7 @@ class ICreateVehiculo: Gtk.Window {
         if(int.TryParse(ID, out int intID) && int.TryParse(ID_Usuario, out int intID_Usuario) && int.TryParse(Modelo, out int intModelo)){
             ListaVehiculos.InsertNewVehiculo(intID,intID_Usuario,Marca,intModelo,Placa);
             ListaVehiculos.ViewVehiculos();
-          
+            ListaVehiculos.ReporVehiculos();
         }
         //  Destroy();
 
