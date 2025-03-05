@@ -7,8 +7,6 @@ namespace Matriz
 {
     public unsafe class MatrizDispersa<T> where T : unmanaged
     {
-
-
         public int capa; //Aparece en graficacion
         public ListaEncabezado<int> filas;
         public ListaEncabezado<int> columnas;

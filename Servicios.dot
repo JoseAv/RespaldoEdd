@@ -1,9 +1,3 @@
 digraph G {  rankdir=LR
- "1" [label="ID: 1\nTotalFactura: sa"];
- "2" [label="ID: 2\nTotalFactura: sda"];
- "1" [label="ID: 1\nTotalFactura: dsa"];
- "3" [label="ID: 3\nTotalFactura: dsa"];
-"1" -> "2" ;
-"2" -> "1" ;
-"1" -> "3" ;
+ "1" [label="ID: 1\nDetalles: dsa"];
 }

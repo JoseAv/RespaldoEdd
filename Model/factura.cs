@@ -16,6 +16,7 @@ namespace FacturaPila {
             newNodo->Top = null;
             if(header == null){
                 header = newNodo;
+                header->atras = null;
                 header->Top = newNodo;
                 return false;
             }
@@ -25,6 +26,7 @@ namespace FacturaPila {
                 NodoRun= NodoRun->sig; 
             }
             NodoRun->sig = newNodo;
+            NodoRun->atras = NodoRun;
             header->Top = newNodo;
             return false;
         }
@@ -36,18 +38,23 @@ namespace FacturaPila {
                 header->Top = null;
                 return header;
             }
-            NodoFactura<T>* NodoRun = header;
-            while (NodoRun->sig != null && NodoRun->sig->Cancelada == false) {
-                NodoRun = NodoRun->sig;
-            }
-            if (NodoRun->sig != null && NodoRun->sig->Cancelada == false) {
-                NodoFactura<T>* lastNode = NodoRun->sig;
-                lastNode->Cancelada = true;
-                header->Top = NodoRun;
+    NodoFactura<T>* lastNonCanceledNode = header->Top;
 
-                return lastNode;
-            }
-            return null;
+    lastNonCanceledNode->Cancelada = true;
+
+    if (lastNonCanceledNode->atras != null)
+    {
+        header->Top = lastNonCanceledNode->atras; 
+    }
+    else
+    {
+        header->Top = null; 
+    }
+
+    return lastNonCanceledNode;
+
+
+            
         }
 
     public unsafe void ReporFactura(){
@@ -75,12 +82,9 @@ namespace FacturaPila {
         Console.WriteLine($"Archivo DOT generado: {dotFilePath}");
         Grafico.GenerarImagen(dotFilePath, "Factura.png");
         return;
-    }
-
-    
+    }   
     }
 }
-
 
 namespace NodoFactura {
 
@@ -90,6 +94,7 @@ namespace NodoFactura {
         public float Total;
         public bool Cancelada;
         public NodoFactura<T>* Top;
+        public NodoFactura<T>* atras;
         public NodoFactura<T>* sig;
     }
 }
